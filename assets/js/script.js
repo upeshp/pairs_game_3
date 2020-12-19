@@ -33,7 +33,8 @@ function flipCard() {
             hasFlippedCard = false;
             secondCard = this;
 
-            checkForMatch();       
+            checkForMatch();     
+            movesCounter(); /****added move counter, code modified from https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript ****/
 }
 
 
@@ -75,3 +76,22 @@ function resetBoard() {
     card.style.order = randomPos;
   });
 })()
+
+
+/****added move counter, code modified from https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript ****/
+
+// Select the class moves-counter and change it's HTML  
+const movesCount = document.querySelector(".moves-counter");
+// Create variable for moves counter, start the count at zero
+let moves = 0;
+
+/*
+Increment the moves counter.  To be called at each
+comparison for every two cards compared add one to the count
+*/
+function movesCounter() {
+	// Update the html for the moves counter
+	movesCount.innerHTML ++;
+	// Keep track of the number of moves for every pair checked
+	moves ++;
+}
