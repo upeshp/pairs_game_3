@@ -7,6 +7,8 @@ const cards = document.querySelectorAll('.memory-card');
 /* ...whenever that event happens, execute a function named flip card */
 cards.forEach(card => card.addEventListener('click', flipCard));
 
+let moves = 0;
+let counter = document.querySelector(".moves");
 
 /* we have to know if it's first or second card clicked, in order to perform matching logic, declare variable */
 let hasFlippedCard = false; //* When we click the first card, it needs to wait until another card is flipped. The variables hasFlippedCard and flippedCard will manage the flip state. In case there is no card flipped, hasFlippedCard is set to true and flippedCard is set to the clicked card *//
@@ -34,7 +36,7 @@ function flipCard() {
             secondCard = this;
 
             checkForMatch();     
-            movesCounter(); /****added move counter, code modified from https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript ****/
+            moveCounter(); /****added move counter, code modified from https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript ****/
 }
 
 
@@ -81,17 +83,13 @@ function resetBoard() {
 /****added move counter, code modified from https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript ****/
 
 // Select the class moves-counter and change it's HTML  
-const movesCount = document.querySelector(".moves-counter");
-// Create variable for moves counter, start the count at zero
-let moves = 0;
+
 
 /*
 Increment the moves counter.  To be called at each
 comparison for every two cards compared add one to the count
 */
-function movesCounter() {
-	// Update the html for the moves counter
-	movesCount.innerHTML ++;
-	// Keep track of the number of moves for every pair checked
-	moves ++;
+function moveCounter(){    
+    moves++;    
+    counter.innerHTML = moves;
 }
