@@ -13,6 +13,14 @@ let counter = document.querySelector(".moves");
 let matches = 0;
 let logger = document.querySelector(".matches");
 
+
+
+ // *** 12. declare modal
+ let modal = document.getElementById("popup1")
+
+ // declaring variable of matchedCards
+let matchedCard = document.getElementsByClassName("flip");
+
 /* we have to know if it's first or second card clicked, in order to perform matching logic, declare variable */
 let hasFlippedCard = false; //* When we click the first card, it needs to wait until another card is flipped. The variables hasFlippedCard and flippedCard will manage the flip state. In case there is no card flipped, hasFlippedCard is set to true and flippedCard is set to the clicked card *//
 let firstCard, secondCard; //* declaring 1st 2nd card variables *//
@@ -112,3 +120,16 @@ function matchLogger(){
     matches++;    
     logger.innerHTML = matches;
 }
+
+// 12. congratulations when all cards match, show modal and moves, time and rating
+// 12. The congratulations function checks to see if all cards are matched, if they are matched then it stops the timer. gets number of moves, star rating and time spent. and displays on the congratulation modal. There are also some functions that close the modal and reset the game on clicking the close icon and play again button provided in the modal.
+function congratulations(){
+    if (matchedCard.length === 12){
+       
+        modal.classList.add("show");
+
+        
+    };
+}
+
+
