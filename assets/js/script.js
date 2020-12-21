@@ -10,6 +10,9 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 let moves = 0;
 let counter = document.querySelector(".moves");
 
+let matches = 0;
+let logger = document.querySelector(".matches");
+
 /* we have to know if it's first or second card clicked, in order to perform matching logic, declare variable */
 let hasFlippedCard = false; //* When we click the first card, it needs to wait until another card is flipped. The variables hasFlippedCard and flippedCard will manage the flip state. In case there is no card flipped, hasFlippedCard is set to true and flippedCard is set to the clicked card *//
 let firstCard, secondCard; //* declaring 1st 2nd card variables *//
@@ -37,15 +40,26 @@ function flipCard() {
 
             checkForMatch();     
             moveCounter(); /****added move counter, code modified from https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript ****/
+            
 }
 
 
 
 /* TIDY UP CODE EACH BIT HAS OWN FUNCTION */
 /* A more elegant way of writing the matching condition is to use a ternary operator. It’s composed by three blocks. The first block is the condition to be evaluated. The second block is executed if the condition returns true, otherwise the executed block is the third: */ 
-function checkForMatch() {
+/*function checkForMatch() {
     let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
     isMatch ? disableCards() : unflipCards();
+} */
+
+function checkForMatch() {
+    if (firstCard.dataset.framework === secondCard.dataset.framework) {
+        disableCards();
+        matchLogger();
+    }
+    else {
+        unflipCards();
+    }
 }
 
 function disableCards() {
@@ -92,4 +106,9 @@ comparison for every two cards compared add one to the count
 function moveCounter(){    
     moves++;    
     counter.innerHTML = moves;
+}
+
+function matchLogger(){    
+    matches++;    
+    logger.innerHTML = matches;
 }
